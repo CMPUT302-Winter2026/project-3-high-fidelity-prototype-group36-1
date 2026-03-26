@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
+import { useSettings } from '../context/SettingsContext';
 
 const Settings: React.FC = () => {
   const navigate = useNavigate();
-  const [learningMode, setLearningMode] = useState<'simple' | 'expert'>('simple');
+  const { learningMode, setLearningMode } = useSettings();
   const [displayMode, setDisplayMode] = useState<'english' | 'cree'>('english');
   const [audioSource, setAudioSource] = useState<'y' | 'th' | 'both'>('both');
 

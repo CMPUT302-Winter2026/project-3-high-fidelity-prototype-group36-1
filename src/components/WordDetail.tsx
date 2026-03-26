@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Word } from '../types';
+import { useSettings } from '../context/SettingsContext';
 
 interface WordDetailProps {
   word: Word;
@@ -8,6 +9,7 @@ interface WordDetailProps {
 }
 
 const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
+  const { learningMode } = useSettings();
   return (
     <motion.div
       initial={{ y: '100%' }}
@@ -79,17 +81,11 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
           )}
 
           {/* Advanced Toggle & Reveal */}
+          {learningMode === 'expert' && (
           <div className="pt-4 md:pt-8 border-t border-[#c1c6d4]/20">
-            <div className="flex items-center justify-between mb-4 md:mb-8">
-              <div className="flex items-center gap-2 md:gap-3">
-                <span className="material-symbols-outlined text-[#727783] text-[18px] md:text-[24px]">psychology</span>
-                <span className="font-bold text-[#1a1c1c] text-xs md:text-base">Advanced Linguistic Data</span>
-              </div>
-              {/* Toggle Switch */}
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" className="sr-only peer" defaultChecked />
-                <div className="w-9 h-5 md:w-11 md:h-6 bg-[#e2e2e2] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 md:after:h-5 md:after:w-5 after:transition-all peer-checked:bg-[#004e99]"></div>
-              </label>
+            <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-8">
+              <span className="material-symbols-outlined text-[#727783] text-[18px] md:text-[24px]">psychology</span>
+              <span className="font-bold text-[#1a1c1c] text-xs md:text-base">Advanced Linguistic Data</span>
             </div>
 
             {/* Morphological Grid */}
@@ -118,6 +114,7 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
               <span className="text-xs md:text-sm font-bold uppercase tracking-widest">Report Linguistic Error</span>
             </button>
           </div>
+          )}
         </div>
       </section>
     </motion.div>
