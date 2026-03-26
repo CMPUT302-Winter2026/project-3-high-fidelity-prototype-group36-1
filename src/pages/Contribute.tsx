@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useVocabulary } from '../context/VocabularyContext';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -10,6 +11,7 @@ function cn(...inputs: ClassValue[]) {
 
 const Contribute: React.FC = () => {
   const navigate = useNavigate();
+  const { submitSuggestion } = useVocabulary();
   const [word, setWord] = useState('');
   const [description, setDescription] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,12 +22,16 @@ const Contribute: React.FC = () => {
     if (!word) return;
     
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setWord('');
-    setDescription('');
+    try {
+      await submitSuggestion({ word, description, category: 'general' });
+      setSubmitted(true);
+      setWord('');
+      setDescription('');
+    } catch (error) {
+           // For now, fail silently or fallback
+    } finally {
+      setIsSubmitting(false);
+    }
     
     setTimeout(() => setSubmitted(false), 3000);
   };

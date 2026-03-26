@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { vocabulary } from '../data/vocabulary';
+import { useVocabulary } from '../context/VocabularyContext';
 import WordDetail from '../components/WordDetail';
 import { Word } from '../types';
 
 const Saved: React.FC = () => {
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
+  const { vocabulary, isLoading } = useVocabulary();
 
   return (
     <div className="min-h-screen bg-[#f9f9f9] pt-14 md:pt-24 px-4 md:px-6 pb-28 md:pb-32 w-full max-w-[800px]">

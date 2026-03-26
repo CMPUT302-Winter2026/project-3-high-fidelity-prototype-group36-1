@@ -91,20 +91,28 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
             {/* Morphological Grid */}
             <div className="grid grid-cols-2 gap-2.5 md:gap-4">
               <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
-                <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Prefix</span>
-                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis.prefix || 'None'}</p>
+                <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Lemma</span>
+                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis?.lemma || 'Unknown'}</p>
+              </div>
+              <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
+                <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Stem</span>
+                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis?.stem || 'Unknown'}</p>
               </div>
               <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
                 <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Root</span>
-                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis.root}</p>
-              </div>
-              <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
-                <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Suffix</span>
-                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis.suffix || 'None'}</p>
+                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis?.root || 'Unknown'}</p>
               </div>
               <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
                 <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Aspect</span>
-                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis.aspect || 'None'}</p>
+                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis?.aspect || 'None'}</p>
+              </div>
+              <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
+                <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Prefix</span>
+                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis?.prefix || 'None'}</p>
+              </div>
+              <div className="p-3 md:p-4 bg-white border border-[#c1c6d4]/30 rounded-xl">
+                <span className="text-[9px] md:text-[10px] font-bold text-[#727783] uppercase">Suffix</span>
+                <p className="font-mono text-xs md:text-sm text-[#1a1c1c]">{word.linguisticAnalysis?.suffix || 'None'}</p>
               </div>
             </div>
 

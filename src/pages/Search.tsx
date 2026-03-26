@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { vocabulary } from '../data/vocabulary';
+import { useVocabulary } from '../context/VocabularyContext';
 import WordDetail from '../components/WordDetail';
 import { Word } from '../types';
 
 const Search: React.FC = () => {
   const [query, setQuery] = useState('');
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
+  const { vocabulary, isLoading } = useVocabulary();
 
   const suggestions = vocabulary.filter(
     (w) =>
