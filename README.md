@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Vocabulary Explorer
 
-# Run and deploy your AI Studio app
+A modern, interactive Cree vocabulary learning application with a persistent backend and visual relationship mapping.
 
-This contains everything you need to run your app locally.
+## 🚀 Features
 
-View your app in AI Studio: https://ai.studio/apps/b3f15085-ce1d-44fc-a86b-e66019e1f4c0
+- **Interactive Node Map**: Visualize word relationships through a dynamic hub.
+- **Persistent Backend**: Real dictionary data served via Express and `db.json`.
+- **Saved Words**: Global bookmarking system stored in local memory.
+- **Advanced Linguistics**: In-depth morphological and phonetic data for learners.
+- **Expert Mode**: Toggle advanced data visibility in settings.
 
-## Run Locally
+## 🛠 Setup & Installation on a New Device
 
-**Prerequisites:**  Node.js
+**Prerequisites:** [Node.js](https://nodejs.org/) (v18+ recommended)
 
+1.  **Clone or Copy** the repository to your local machine.
+2.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Setup Environment** (Optional):
+    Ensure `.env.local` contains your Gemini API key if you plan to use AI features.
+    ```bash
+    GEMINI_API_KEY=your_key_here
+    ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🏃‍♂️ Running the Application
+
+This project requires **two** server processes to be running simultaneously:
+
+### 1. Start the Backend API
+In your first terminal tab, run:
+```bash
+npm run server
+```
+*Port: 3001* - This serves the vocabulary data and handles word suggestions.
+
+### 2. Start the Frontend Dev Server
+In your second terminal tab, run:
+```bash
+npm run dev
+```
+*Port: 3000* - Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📁 Data Structure
+- **Frontend**: React (Vite), Framer Motion, Tailwind CSS v4.
+- **Backend**: Node.js, Express.
+- **Database**: `db.json` (Static JSON file used for persistent storage).
+
+## 💡 Tech Stack
+- **UI**: React 19 + TypeScript
+- **Styling**: Tailwind CSS + Material Symbols
+- **Animations**: Framer Motion
+- **Server**: Express.js
+- **Persistence**: File-based JSON Database

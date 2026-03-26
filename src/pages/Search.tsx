@@ -9,7 +9,7 @@ const Search: React.FC = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
-  const { vocabulary, isLoading } = useVocabulary();
+  const { vocabulary, isLoading, savedWordIds, toggleSavedWord } = useVocabulary();
 
   const suggestions = vocabulary.filter(
     (w) =>
@@ -82,10 +82,10 @@ const Search: React.FC = () => {
             </div>
             <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
               <button
-                onClick={(e) => e.stopPropagation()}
-                className="p-1.5 text-[#004e99] hover:scale-110 transition-transform active:scale-90"
+                onClick={(e) => { e.stopPropagation(); toggleSavedWord(word.id); }}
+                className={`p-1.5 transition-transform active:scale-90 ${savedWordIds.includes(word.id) ? 'text-[#004e99] hover:scale-110' : 'text-[#727783] hover:text-[#004e99]'}`}
               >
-                <span className="material-symbols-outlined fill-1 text-[20px]">bookmark</span>
+                <span className={`material-symbols-outlined text-[20px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); navigate(`/nodes/${word.id}`); }}

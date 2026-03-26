@@ -3,24 +3,36 @@ import { Word } from '../types';
 
 interface VocabularyContextType {
   vocabulary: Word[];
+  savedWordIds: string[];
   isLoading: boolean;
   error: string | null;
   refreshVocabulary: () => Promise<void>;
   submitSuggestion: (suggestedData: { word: string; category: string; description: string }) => Promise<void>;
+  toggleSavedWord: (id: string) => void;
 }
 
 const VocabularyContext = createContext<VocabularyContextType>({
   vocabulary: [],
+  savedWordIds: [],
   isLoading: true,
   error: null,
   refreshVocabulary: async () => {},
   submitSuggestion: async () => {},
+  toggleSavedWord: () => {},
 });
 
 export const useVocabulary = () => useContext(VocabularyContext);
 
 export const VocabularyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [vocabulary, setVocabulary] = useState<Word[]>([]);
+  const [savedWordIds, setSavedWordIds] = useState<string[]>(() => {
+    try {
+      const stored = localStorage.getItem('savedWords');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -56,8 +68,16 @@ export const VocabularyProvider: React.FC<{ children: ReactNode }> = ({ children
     }
   };
 
+  const toggleSavedWord = (id: string) => {
+    setSavedWordIds((prevIds) => {
+      const newIds = prevIds.includes(id) ? prevIds.filter(wordId => wordId !== id) : [...prevIds, id];
+      localStorage.setItem('savedWords', JSON.stringify(newIds));
+      return newIds;
+    });
+  };
+
   return (
-    <VocabularyContext.Provider value={{ vocabulary, isLoading, error, refreshVocabulary: fetchVocabulary, submitSuggestion }}>
+    <VocabularyContext.Provider value={{ vocabulary, savedWordIds, isLoading, error, refreshVocabulary: fetchVocabulary, submitSuggestion, toggleSavedWord }}>
       {children}
     </VocabularyContext.Provider>
   );
