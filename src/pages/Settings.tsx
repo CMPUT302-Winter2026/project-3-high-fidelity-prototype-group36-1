@@ -128,8 +128,8 @@ const Settings: React.FC = () => {
               className="w-4 h-4 md:w-5 md:h-5 text-[#004e99] border-[#c1c6d4] focus:ring-[#004e99]" 
             />
           </label>
-          <label className={`flex items-center justify-between p-3 md:p-4 rounded-lg md:rounded-xl transition-all cursor-pointer ${audioSource === 'both' ? 'bg-[#f3f3f3] border-2 border-[#004e99]/10' : 'hover:bg-[#f3f3f3]'}`}>
-            <span className={`font-semibold text-sm md:text-base ${audioSource === 'both' ? 'text-[#004e99]' : 'text-[#1a1c1c]'}`}>Both Dialects</span>
+          <label className="flex items-center justify-between p-3 md:p-4 rounded-lg md:rounded-xl hover:bg-[#f3f3f3] transition-all cursor-pointer">
+            <span className="font-semibold text-[#1a1c1c] text-sm md:text-base">Both Dialects</span>
             <input 
               type="radio" 
               name="audio_source" 
