@@ -19,11 +19,7 @@ A modern, interactive Cree vocabulary learning application with a persistent bac
     ```bash
     npm install
     ```
-3.  **Setup Environment** (Optional):
-    Ensure `.env.local` contains your Gemini API key if you plan to use AI features.
-    ```bash
-    GEMINI_API_KEY=your_key_here
-    ```
+
 
 ## 🏃‍♂️ Running the Application
 
