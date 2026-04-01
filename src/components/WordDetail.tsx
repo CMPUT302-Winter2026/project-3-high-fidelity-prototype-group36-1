@@ -58,7 +58,7 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
                   <span className={`material-symbols-outlined text-[18px] md:text-[20px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
                 </button>
                 <button
-                  onClick={() => { onClose(); navigate(`/nodes/${word.id}`); }}
+                  onClick={() => navigate(`/nodes/${word.id}`)}
                   className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#727783] hover:text-[#004e99] shadow-sm"
                 >
                   <span className="material-symbols-outlined text-[18px] md:text-[20px]">hub</span>
