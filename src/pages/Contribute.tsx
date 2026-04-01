@@ -74,41 +74,36 @@ const Contribute: React.FC = () => {
       </section>
 
       {/* Contribution Options */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 items-start">
-        <button className="group flex flex-row md:flex-col items-center md:items-start text-left p-4 md:p-8 bg-white rounded-xl border border-[#c1c6d4]/20 hover:bg-[#f3f3f3] hover:shadow-lg transition-all duration-300 gap-4 md:gap-0">
-          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#d6e3ff] rounded-xl md:mb-6 group-active:scale-95 transition-transform flex-shrink-0">
+      <div className="flex flex-col gap-3 md:gap-4">
+        <button className="group flex items-center text-left p-4 md:p-5 bg-white rounded-full border border-[#c1c6d4]/20 hover:bg-[#f3f3f3] hover:shadow-lg transition-all duration-300 gap-4 active:scale-[0.98]">
+          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#d6e3ff] rounded-full group-active:scale-95 transition-transform flex-shrink-0">
             <span className="material-symbols-outlined text-[#004e99] text-[20px] md:text-[24px]">add_comment</span>
           </div>
           <div className="min-w-0">
-            <h3 className="text-base md:text-xl font-bold text-[#1a1c1c] mb-0.5 md:mb-2 tracking-tight">Suggest a Word</h3>
-            <p className="text-[#414752] text-xs md:text-sm leading-relaxed">Add a new word, its pronunciation, or a regional variation to our database.</p>
+            <h3 className="text-base md:text-lg font-bold text-[#1a1c1c] tracking-tight">Suggest a Word</h3>
+            <p className="text-[#414752] text-xs md:text-sm leading-relaxed">Add a new word, pronunciation, or regional variation.</p>
           </div>
         </button>
 
-        <button className="group flex flex-row md:flex-col items-center md:items-start text-left p-4 md:p-8 bg-white rounded-xl border border-[#c1c6d4]/20 hover:bg-[#f3f3f3] hover:shadow-lg transition-all duration-300 gap-4 md:gap-0 mt-0 md:mt-12">
-          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#ffdad6] rounded-xl md:mb-6 group-active:scale-95 transition-transform flex-shrink-0">
+        <button className="group flex items-center text-left p-4 md:p-5 bg-white rounded-full border border-[#c1c6d4]/20 hover:bg-[#f3f3f3] hover:shadow-lg transition-all duration-300 gap-4 active:scale-[0.98]">
+          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#ffdad6] rounded-full group-active:scale-95 transition-transform flex-shrink-0">
             <span className="material-symbols-outlined text-[#ba1a1a] text-[20px] md:text-[24px]">report_gmailerrorred</span>
           </div>
           <div className="min-w-0">
-            <h3 className="text-base md:text-xl font-bold text-[#1a1c1c] mb-0.5 md:mb-2 tracking-tight">Report an Error</h3>
-            <p className="text-[#414752] text-xs md:text-sm leading-relaxed">Notice a typo or a wrong definition? Help us maintain accuracy by reporting it.</p>
+            <h3 className="text-base md:text-lg font-bold text-[#1a1c1c] tracking-tight">Report an Error</h3>
+            <p className="text-[#414752] text-xs md:text-sm leading-relaxed">Notice a typo or wrong definition? Help us fix it.</p>
           </div>
         </button>
 
-        <button className="group flex flex-row md:flex-col items-center md:items-start text-left p-4 md:p-8 bg-white rounded-xl border border-[#c1c6d4]/20 hover:bg-[#f3f3f3] hover:shadow-lg transition-all duration-300 gap-4 md:gap-0">
-          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#e8e8e8] rounded-xl md:mb-6 group-active:scale-95 transition-transform flex-shrink-0">
+        <button className="group flex items-center text-left p-4 md:p-5 bg-white rounded-full border border-[#c1c6d4]/20 hover:bg-[#f3f3f3] hover:shadow-lg transition-all duration-300 gap-4 active:scale-[0.98]">
+          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-[#e8e8e8] rounded-full group-active:scale-95 transition-transform flex-shrink-0">
             <span className="material-symbols-outlined text-[#414752] text-[20px] md:text-[24px]">rate_review</span>
           </div>
           <div className="min-w-0">
-            <h3 className="text-base md:text-xl font-bold text-[#1a1c1c] mb-0.5 md:mb-2 tracking-tight">General Feedback</h3>
-            <p className="text-[#414752] text-xs md:text-sm leading-relaxed">Share your thoughts on the app experience or suggest new features.</p>
+            <h3 className="text-base md:text-lg font-bold text-[#1a1c1c] tracking-tight">General Feedback</h3>
+            <p className="text-[#414752] text-xs md:text-sm leading-relaxed">Share thoughts on the app or suggest new features.</p>
           </div>
         </button>
-
-        <div className="p-6 md:p-8 border border-dashed border-[#c1c6d4]/30 rounded-xl flex flex-col items-center justify-center text-center space-y-3 opacity-50 hidden md:flex">
-          <span className="material-symbols-outlined text-4xl text-[#727783]">volunteer_activism</span>
-          <p className="text-xs font-medium tracking-widest uppercase">Community Driven</p>
-        </div>
       </div>
 
       {/* Quick Suggestion Form */}

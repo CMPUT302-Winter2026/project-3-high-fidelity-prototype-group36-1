@@ -32,7 +32,7 @@ const Explore: React.FC = () => {
         <div className="grid grid-cols-3 md:grid-cols-3 gap-2.5 md:gap-4">
           {/* Weather */}
           <button onClick={() => navigate('/category/weather')} className="group p-3 md:p-6 bg-white rounded-2xl md:rounded-3xl border border-[#c1c6d4]/10 flex flex-col items-center justify-center gap-1.5 md:gap-3 hover:bg-[#004e99]/5 active:scale-95 transition-all duration-300 aspect-[4/3] md:aspect-square">
-            <span className="material-symbols-outlined text-[#004e99] text-2xl md:text-3xl">cloudy_snowing</span>
+            <span className="material-symbols-outlined text-[#004e99] text-3xl md:text-4xl">cloudy_snowing</span>
             <div className="text-center">
               <p className="font-bold text-[#1a1c1c] leading-tight text-xs md:text-base">Yîkwaskwan</p>
               <p className="text-[9px] md:text-xs text-[#414752] uppercase tracking-widest font-medium">Weather</p>
@@ -40,7 +40,7 @@ const Explore: React.FC = () => {
           </button>
           {/* Animals */}
           <button onClick={() => navigate('/category/animals')} className="group p-3 md:p-6 bg-white rounded-2xl md:rounded-3xl border border-[#c1c6d4]/10 flex flex-col items-center justify-center gap-1.5 md:gap-3 hover:bg-[#004e99]/5 active:scale-95 transition-all duration-300 aspect-[4/3] md:aspect-square">
-            <span className="material-symbols-outlined text-[#004e99] text-2xl md:text-3xl">pets</span>
+            <span className="material-symbols-outlined text-[#004e99] text-3xl md:text-4xl">pets</span>
             <div className="text-center">
               <p className="font-bold text-[#1a1c1c] leading-tight text-xs md:text-base">Pisesiwak</p>
               <p className="text-[9px] md:text-xs text-[#414752] uppercase tracking-widest font-medium">Animals</p>
@@ -48,7 +48,7 @@ const Explore: React.FC = () => {
           </button>
           {/* Nature */}
           <button onClick={() => navigate('/category/nature')} className="group p-3 md:p-6 bg-white rounded-2xl md:rounded-3xl border border-[#c1c6d4]/10 flex flex-col items-center justify-center gap-1.5 md:gap-3 hover:bg-[#004e99]/5 active:scale-95 transition-all duration-300 aspect-[4/3] md:aspect-square">
-            <span className="material-symbols-outlined text-[#004e99] text-2xl md:text-3xl">forest</span>
+            <span className="material-symbols-outlined text-[#004e99] text-3xl md:text-4xl">forest</span>
             <div className="text-center">
               <p className="font-bold text-[#1a1c1c] leading-tight text-xs md:text-base">Askîy</p>
               <p className="text-[9px] md:text-xs text-[#414752] uppercase tracking-widest font-medium">Nature</p>
@@ -56,7 +56,7 @@ const Explore: React.FC = () => {
           </button>
           {/* Family */}
           <button onClick={() => navigate('/category/family')} className="group p-3 md:p-6 bg-white rounded-2xl md:rounded-3xl border border-[#c1c6d4]/10 flex flex-col items-center justify-center gap-1.5 md:gap-3 hover:bg-[#004e99]/5 active:scale-95 transition-all duration-300 aspect-[4/3] md:aspect-square">
-            <span className="material-symbols-outlined text-[#004e99] text-2xl md:text-3xl">family_restroom</span>
+            <span className="material-symbols-outlined text-[#004e99] text-3xl md:text-4xl">family_restroom</span>
             <div className="text-center">
               <p className="font-bold text-[#1a1c1c] leading-tight text-xs md:text-base">Wâhkôtowin</p>
               <p className="text-[9px] md:text-xs text-[#414752] uppercase tracking-widest font-medium">Family</p>
@@ -64,7 +64,7 @@ const Explore: React.FC = () => {
           </button>
           {/* Greetings */}
           <button onClick={() => navigate('/category/greetings')} className="group p-3 md:p-6 bg-white rounded-2xl md:rounded-3xl border border-[#c1c6d4]/10 flex flex-col items-center justify-center gap-1.5 md:gap-3 hover:bg-[#004e99]/5 active:scale-95 transition-all duration-300 aspect-[4/3] md:aspect-square">
-            <span className="material-symbols-outlined text-[#004e99] text-2xl md:text-3xl">front_hand</span>
+            <span className="material-symbols-outlined text-[#004e99] text-3xl md:text-4xl">front_hand</span>
             <div className="text-center">
               <p className="font-bold text-[#1a1c1c] leading-tight text-xs md:text-base">Tânisi</p>
               <p className="text-[9px] md:text-xs text-[#414752] uppercase tracking-widest font-medium">Greetings</p>
@@ -72,7 +72,7 @@ const Explore: React.FC = () => {
           </button>
           {/* Food */}
           <button onClick={() => navigate('/category/food')} className="group p-3 md:p-6 bg-white rounded-2xl md:rounded-3xl border border-[#c1c6d4]/10 flex flex-col items-center justify-center gap-1.5 md:gap-3 hover:bg-[#004e99]/5 active:scale-95 transition-all duration-300 aspect-[4/3] md:aspect-square">
-            <span className="material-symbols-outlined text-[#004e99] text-2xl md:text-3xl">restaurant</span>
+            <span className="material-symbols-outlined text-[#004e99] text-3xl md:text-4xl">restaurant</span>
             <div className="text-center">
               <p className="font-bold text-[#1a1c1c] leading-tight text-xs md:text-base">Mîcisowin</p>
               <p className="text-[9px] md:text-xs text-[#414752] uppercase tracking-widest font-medium">Food</p>
