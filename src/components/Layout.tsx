@@ -21,8 +21,8 @@ const LearningModeBadge: React.FC = () => {
           : "bg-[#d6e3ff] text-[#004e99]"
       )}
     >
-      <span className="material-symbols-outlined text-[12px] md:text-[14px] fill-1">
-        {isExpert ? 'science' : 'school'}
+      <span className="material-symbols-outlined text-[10px] md:text-[12px] fill-1">
+        {isExpert ? 'psychology' : 'school'}
       </span>
       {isExpert ? 'Expert' : 'Simple'}
     </span>
