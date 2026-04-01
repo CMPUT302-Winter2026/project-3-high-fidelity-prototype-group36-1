@@ -134,18 +134,7 @@ const WordNodes: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Slide-up Sheet Preview / Drag Handle */}
-      <div className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 w-full max-w-lg px-4 flex flex-col items-center">
-        <div className="w-12 h-1.5 bg-[#c1c6d4] rounded-full mb-2 opacity-40"></div>
-        <div className="w-full h-8 bg-[#f3f3f3] rounded-t-3xl shadow-lg border-t border-[#c1c6d4]/10"></div>
-      </div>
 
-      {/* Floating Action Element (Optional Tooltip/Map Control) */}
-      <div className="fixed right-6 bottom-24 md:bottom-28 flex flex-col gap-3">
-        <button onClick={() => navigate(-1)} className="w-12 h-12 bg-white text-[#1a1c1c] shadow-xl rounded-full flex items-center justify-center active:scale-95 duration-200 border border-[#c1c6d4]/20 hover:bg-[#f3f3f3]">
-          <span className="material-symbols-outlined">close</span>
-        </button>
-      </div>
     </div>
   );
 };
