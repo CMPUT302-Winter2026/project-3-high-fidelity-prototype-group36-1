@@ -11,20 +11,24 @@ interface WordDetailProps {
 const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
   const { learningMode } = useSettings();
   return (
-    <motion.div
-      initial={{ y: '100%' }}
-      animate={{ y: 0 }}
-      exit={{ y: '100%' }}
-      transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-      className="fixed inset-x-0 bottom-0 z-[60] flex flex-col items-center"
-    >
+    <>
       {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/5 backdrop-blur-sm -z-10 h-screen translate-y-[-100%]"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[59] bg-black/40"
         onClick={onClose}
       />
 
-      <section className="w-full max-w-2xl max-h-[90vh] bg-white rounded-t-[2rem] md:rounded-t-[2.5rem] shadow-2xl border-x border-t border-[#c1c6d4]/10 flex flex-col overflow-hidden">
+      <motion.div
+        initial={{ y: '100%' }}
+        animate={{ y: 0 }}
+        exit={{ y: '100%' }}
+        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        className="fixed inset-x-0 bottom-0 z-[60] flex flex-col items-center"
+      >
+        <section className="w-full max-w-2xl max-h-[70vh] bg-white rounded-t-[2rem] md:rounded-t-[2.5rem] shadow-2xl border-x border-t border-[#c1c6d4]/10 flex flex-col overflow-hidden">
         {/* Top Bar: Drag Handle + Close */}
         <div className="w-full flex items-center justify-between px-4 md:px-6 py-3 md:py-4 flex-shrink-0">
           <div className="w-9 h-9" />
@@ -132,7 +136,8 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
           )}
         </div>
       </section>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 
