@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { useVocabulary } from '../context/VocabularyContext';
+import { useSettings } from '../context/SettingsContext';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -12,6 +13,7 @@ function cn(...inputs: ClassValue[]) {
 const Contribute: React.FC = () => {
   const navigate = useNavigate();
   const { submitSuggestion } = useVocabulary();
+  const { learningMode } = useSettings();
   const [word, setWord] = useState('');
   const [description, setDescription] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,11 +44,25 @@ const Contribute: React.FC = () => {
       <header className="fixed top-0 w-full md:w-[calc(100%-16rem)] md:left-64 z-50 bg-[#f9f9f9]/80 backdrop-blur-md flex items-center justify-between px-4 md:px-6 py-3 md:py-4">
         <div className="flex items-center gap-3">
           <motion.h1
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] whitespace-nowrap"
-          >Contribute</motion.h1>
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] whitespace-nowrap flex items-center"
+          >
+            Contribute
+            <span
+              className={`inline-flex items-center gap-0.5 ml-2 px-2 py-0.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider align-middle transition-colors duration-300 ${
+                learningMode === 'expert'
+                  ? 'bg-[#fff3e0] text-[#e65100]'
+                  : 'bg-[#d6e3ff] text-[#004e99]'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[12px] md:text-[14px] fill-1">
+                {learningMode === 'expert' ? 'science' : 'school'}
+              </span>
+              {learningMode === 'expert' ? 'Expert' : 'Simple'}
+            </span>
+          </motion.h1>
         </div>
       </header>
 

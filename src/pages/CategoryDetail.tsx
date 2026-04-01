@@ -4,12 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useVocabulary } from '../context/VocabularyContext';
 import WordDetail from '../components/WordDetail';
 import { Word } from '../types';
+import { useSettings } from '../context/SettingsContext';
 
 const CategoryDetail: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
   const { vocabulary, isLoading, savedWordIds, toggleSavedWord } = useVocabulary();
+  const { learningMode } = useSettings();
   
   const categoryWords = vocabulary.filter(w => w.category.toLowerCase() === id?.toLowerCase());
   const wordOfTheDay = categoryWords[0] || (vocabulary.length > 0 ? vocabulary[0] : null);
@@ -26,11 +28,25 @@ const CategoryDetail: React.FC = () => {
             <span className="material-symbols-outlined text-[#004e99]">arrow_back</span>
           </button>
           <motion.h1
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] capitalize whitespace-nowrap"
-          >{id}</motion.h1>
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] capitalize whitespace-nowrap flex items-center"
+          >
+            {id}
+            <span
+              className={`inline-flex items-center gap-0.5 ml-2 px-2 py-0.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider align-middle transition-colors duration-300 ${
+                learningMode === 'expert'
+                  ? 'bg-[#fff3e0] text-[#e65100]'
+                  : 'bg-[#d6e3ff] text-[#004e99]'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[12px] md:text-[14px] fill-1">
+                {learningMode === 'expert' ? 'science' : 'school'}
+              </span>
+              {learningMode === 'expert' ? 'Expert' : 'Simple'}
+            </span>
+          </motion.h1>
         </div>
         <button className="p-1.5 hover:bg-[#e8e8e8] transition-colors active:scale-95 duration-150 rounded-full flex items-center justify-center">
           <span className="material-symbols-outlined text-[#414752]">search</span>

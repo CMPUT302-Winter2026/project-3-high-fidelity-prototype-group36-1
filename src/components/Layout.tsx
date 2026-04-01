@@ -1,15 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useSettings } from '../context/SettingsContext';
 
 function cn(...inputs: any[]) {
   return twMerge(clsx(inputs));
 }
 
+const LearningModeBadge: React.FC = () => {
+  const { learningMode } = useSettings();
+  const isExpert = learningMode === 'expert';
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-0.5 ml-2 px-2 py-0.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider align-middle transition-colors duration-300",
+        isExpert
+          ? "bg-[#fff3e0] text-[#e65100]"
+          : "bg-[#d6e3ff] text-[#004e99]"
+      )}
+    >
+      <span className="material-symbols-outlined text-[12px] md:text-[14px] fill-1">
+        {isExpert ? 'science' : 'school'}
+      </span>
+      {isExpert ? 'Expert' : 'Simple'}
+    </span>
+  );
+};
+
 const Layout: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isHomeTitleFaded, setIsHomeTitleFaded] = useState(false);
 
@@ -144,6 +166,14 @@ const Layout: React.FC = () => {
       {!shouldHideHeader && (
         <header className="fixed top-0 w-full md:w-[calc(100%-16rem)] md:left-64 z-50 flex justify-between items-center px-4 md:px-6 py-3 md:py-4 bg-[#f9f9f9]/80 backdrop-blur-md">
           <div className="flex items-center gap-3 md:gap-4 relative h-8 md:h-10">
+            {location.pathname !== '/' && (
+              <button
+                onClick={() => navigate(-1)}
+                className="p-1.5 -ml-1.5 hover:bg-[#e8e8e8] transition-colors active:scale-95 duration-150 rounded-full flex items-center justify-center z-10"
+              >
+                <span className="material-symbols-outlined text-[#004e99]">arrow_back</span>
+              </button>
+            )}
             <AnimatePresence mode="wait">
               <motion.h1 
                 key={getHeaderTitle()}
@@ -151,9 +181,10 @@ const Layout: React.FC = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.95 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] absolute left-0 whitespace-nowrap"
+                className="font-extrabold tracking-tighter text-2xl md:text-3xl text-[#1a1c1c] whitespace-nowrap flex items-center"
               >
                 {getHeaderTitle()}
+                <LearningModeBadge />
               </motion.h1>
             </AnimatePresence>
           </div>

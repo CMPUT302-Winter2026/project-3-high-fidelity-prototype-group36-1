@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 import { SettingsProvider } from './context/SettingsContext';
 import { VocabularyProvider } from './context/VocabularyContext';
 import Layout from './components/Layout';
+import Tutorial from './components/Tutorial';
 import Explore from './pages/Explore';
 import Search from './pages/Search';
 import Saved from './pages/Saved';
@@ -12,9 +15,21 @@ import Settings from './pages/Settings';
 import WordNodes from './pages/WordNodes';
 
 export default function App() {
+  const [showTutorial, setShowTutorial] = useState(
+    () => !window.localStorage.getItem('tutorialComplete')
+  );
+
+  const completeTutorial = () => {
+    window.localStorage.setItem('tutorialComplete', 'true');
+    setShowTutorial(false);
+  };
+
   return (
     <VocabularyProvider>
       <SettingsProvider>
+        <AnimatePresence>
+          {showTutorial && <Tutorial onComplete={completeTutorial} />}
+        </AnimatePresence>
         <Router>
           <Routes>
             <Route path="/" element={<Layout />}>
