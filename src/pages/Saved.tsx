@@ -5,6 +5,9 @@ import { useVocabulary } from '../context/VocabularyContext';
 import WordDetail from '../components/WordDetail';
 import { Word } from '../types';
 
+const normalize = (str: string) =>
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
 const Saved: React.FC = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
@@ -14,8 +17,8 @@ const Saved: React.FC = () => {
   const savedWords = useMemo(() => {
     let list = vocabulary.filter(w => savedWordIds.includes(w.id));
     if (query.trim()) {
-      const q = query.toLowerCase();
-      list = list.filter(w => w.cree.toLowerCase().includes(q) || w.translation.toLowerCase().includes(q));
+      const q = normalize(query);
+      list = list.filter(w => normalize(w.cree).includes(q) || normalize(w.translation).includes(q));
     }
     return list;
   }, [vocabulary, savedWordIds, query]);
@@ -42,7 +45,7 @@ const Saved: React.FC = () => {
       {/* Search Bar */}
       {savedWordIds.length > 0 && (
         <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-8 mt-2 md:mt-0">
-          <div className="flex-1 flex items-center gap-2 bg-[#f3f3f3] rounded-xl px-4 py-3 border border-[#c1c6d4]/20 focus-within:border-[#004e99]/50 transition-all shadow-sm">
+          <div className="flex-1 flex items-center gap-2 bg-[#f3f3f3] rounded-full px-4 py-3 border border-[#c1c6d4]/20 focus-within:border-[#004e99]/50 transition-all shadow-sm">
             <span className="material-symbols-outlined text-[#414752] text-xl">search</span>
             <input
               type="text"
@@ -69,11 +72,11 @@ const Saved: React.FC = () => {
           savedWords.map((word, index) => (
             <motion.div
               key={word.id}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.04 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.05 }}
               onClick={() => setSelectedWord(word)}
-              className="bg-white rounded-xl md:rounded-full px-4 py-3 md:px-8 md:py-5 flex items-center justify-between border border-[#c1c6d4]/10 hover:bg-[#f3f3f3] transition-all group cursor-pointer active:scale-[0.98]"
+              className="bg-white rounded-xl md:rounded-full px-6 py-3 md:px-10 md:py-5 flex items-center justify-between border border-[#c1c6d4]/10 hover:bg-[#f3f3f3] transition-all group cursor-pointer active:scale-[0.98]"
             >
               <div className="flex flex-col min-w-0 flex-1 mr-2">
                 <span className="text-base md:text-xl font-bold tracking-tight text-[#1a1c1c] truncate">{highlightMatch(word.cree, query)}</span>
@@ -81,18 +84,21 @@ const Saved: React.FC = () => {
               </div>
               <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
                 <button 
+                  title="Unsave word"
                   onClick={(e) => { e.stopPropagation(); toggleSavedWord(word.id); }}
                   className={`p-1.5 transition-transform active:scale-90 text-[#004e99] hover:scale-110`}
                 >
                   <span className="material-symbols-outlined fill-1 text-[20px]">bookmark</span>
                 </button>
                 <button 
+                  title="View word connections"
                   onClick={(e) => { e.stopPropagation(); navigate(`/nodes/${word.id}`); }}
                   className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
                 >
                   <span className="material-symbols-outlined text-[20px]">hub</span>
                 </button>
                 <button 
+                  title="Play pronunciation"
                   onClick={(e) => e.stopPropagation()}
                   className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
                 >

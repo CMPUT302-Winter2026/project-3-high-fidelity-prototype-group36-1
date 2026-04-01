@@ -161,7 +161,7 @@ const Contribute: React.FC = () => {
                 </>
               )}
             </button>
-            <p className="text-center text-[10px] md:text-xs text-[#414752] mt-3 font-medium">Thank you for helping the Cree community.</p>
+            <p className="text-center text-[10px] md:text-xs text-[#414752] mt-3 font-medium">Thank you for helping the Vocabulary Explorer community.</p>
           </div>
         </form>
       </section>

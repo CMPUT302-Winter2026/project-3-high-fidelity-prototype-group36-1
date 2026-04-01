@@ -91,7 +91,7 @@ const CategoryDetail: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.08 }}
             onClick={() => setSelectedWord(word)}
-            className="group bg-white p-3.5 md:p-6 rounded-xl md:rounded-2xl flex items-center justify-between transition-all duration-300 hover:bg-[#e8e8e8] shadow-sm border border-[#c1c6d4]/10 cursor-pointer active:scale-[0.98]"
+            className="group bg-white p-3.5 md:p-6 rounded-full flex items-center justify-between transition-all duration-300 hover:bg-[#e8e8e8] shadow-sm border border-[#c1c6d4]/10 cursor-pointer active:scale-[0.98]"
           >
             <div className="flex items-center gap-3 md:gap-6 min-w-0 flex-1">
               <div className="w-9 h-9 md:w-12 md:h-12 rounded-full bg-[#d6e3ff] flex items-center justify-center text-[#004e99] group-hover:scale-110 transition-transform flex-shrink-0">
@@ -106,18 +106,21 @@ const CategoryDetail: React.FC = () => {
             </div>
             <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
               <button
+                title={savedWordIds.includes(word.id) ? 'Unsave word' : 'Save word'}
                 onClick={(e) => { e.stopPropagation(); toggleSavedWord(word.id); }}
                 className={`p-1.5 transition-transform active:scale-90 ${savedWordIds.includes(word.id) ? 'text-[#004e99] hover:scale-110' : 'text-[#727783] hover:text-[#004e99]'}`}
               >
                 <span className={`material-symbols-outlined text-[20px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
               </button>
               <button
+                title="View word connections"
                 onClick={(e) => { e.stopPropagation(); navigate(`/nodes/${word.id}`); }}
                 className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
               >
                 <span className="material-symbols-outlined text-[20px]">hub</span>
               </button>
               <button
+                title="Play pronunciation"
                 onClick={(e) => e.stopPropagation()}
                 className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
               >

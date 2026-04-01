@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useVocabulary } from '../context/VocabularyContext';
 import WordDetail from '../components/WordDetail';
 import { Word } from '../types';
 
+const normalize = (str: string) =>
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
 const Search: React.FC = () => {
   const navigate = useNavigate();
-  const [query, setQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('q') || '');
   const [selectedWord, setSelectedWord] = useState<Word | null>(null);
   const { vocabulary, isLoading, savedWordIds, toggleSavedWord } = useVocabulary();
 
+  const normalizedQuery = normalize(query);
   const suggestions = vocabulary.filter(
     (w) =>
-      w.cree.toLowerCase().includes(query.toLowerCase()) ||
-      w.translation.toLowerCase().includes(query.toLowerCase())
+      normalize(w.cree).includes(normalizedQuery) ||
+      normalize(w.translation).includes(normalizedQuery)
   );
 
   const highlightMatch = (text: string, query: string) => {
@@ -37,7 +42,7 @@ const Search: React.FC = () => {
     <div className="min-h-screen bg-[#f9f9f9] pt-14 md:pt-24 px-4 md:px-6 pb-28 md:pb-32 w-full max-w-[800px]">
       {/* Search Header */}
       <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-8">
-        <div className="flex-1 flex items-center gap-2 bg-[#f3f3f3] rounded-xl px-4 py-3 border border-[#c1c6d4]/20 focus-within:border-[#004e99]/50 transition-all shadow-sm">
+        <div className="flex-1 flex items-center gap-2 bg-[#f3f3f3] rounded-full px-4 py-3 border border-[#c1c6d4]/20 focus-within:border-[#004e99]/50 transition-all shadow-sm">
           <span className="material-symbols-outlined text-[#414752] text-xl">search</span>
           <input
             type="text"
@@ -71,7 +76,7 @@ const Search: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
             onClick={() => setSelectedWord(word)}
-            className="group flex items-center justify-between p-4 md:p-5 bg-white rounded-xl hover:bg-[#e8e8e8] transition-all duration-300 cursor-pointer border border-transparent active:scale-[0.98] shadow-sm"
+            className="group flex items-center justify-between px-6 py-4 md:px-8 md:py-5 bg-white rounded-full hover:bg-[#e8e8e8] transition-all duration-300 cursor-pointer border border-transparent active:scale-[0.98] shadow-sm"
           >
             <div className="flex flex-col gap-0.5 min-w-0 flex-1 mr-3">
               <div className="font-bold text-base md:text-lg text-[#1a1c1c] truncate">
@@ -82,18 +87,21 @@ const Search: React.FC = () => {
             </div>
             <div className="flex items-center gap-1.5 md:gap-4 flex-shrink-0">
               <button
+                title={savedWordIds.includes(word.id) ? 'Unsave word' : 'Save word'}
                 onClick={(e) => { e.stopPropagation(); toggleSavedWord(word.id); }}
                 className={`p-1.5 transition-transform active:scale-90 ${savedWordIds.includes(word.id) ? 'text-[#004e99] hover:scale-110' : 'text-[#727783] hover:text-[#004e99]'}`}
               >
                 <span className={`material-symbols-outlined text-[20px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
               </button>
               <button
+                title="View word connections"
                 onClick={(e) => { e.stopPropagation(); navigate(`/nodes/${word.id}`); }}
                 className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
               >
                 <span className="material-symbols-outlined text-[20px]">hub</span>
               </button>
               <button
+                title="Play pronunciation"
                 onClick={(e) => e.stopPropagation()}
                 className="p-1.5 text-[#727783] hover:text-[#004e99] transition-colors active:scale-90"
               >

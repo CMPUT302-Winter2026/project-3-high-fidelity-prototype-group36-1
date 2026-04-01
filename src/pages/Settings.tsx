@@ -165,7 +165,7 @@ const Settings: React.FC = () => {
 
       {/* Version Info */}
       <div className="text-center py-2 md:py-6">
-        <p className="text-[9px] md:text-[10px] font-bold tracking-[0.2em] text-[#c1c6d4] uppercase">Vocabulary Explorer v2.4.0 (Y-Dialect Focus)</p>
+        <p className="text-[9px] md:text-[10px] font-bold tracking-[0.2em] text-[#c1c6d4] uppercase">Vocabulary Explorer v1.0.1 (TEAM 36)</p>
       </div>
     </div>
   );

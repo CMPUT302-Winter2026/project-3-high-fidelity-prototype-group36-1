@@ -38,6 +38,7 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
           <div className="w-9 h-9" />
           <div className="w-10 md:w-12 h-1.5 bg-[#e2e2e2] rounded-full cursor-pointer" onClick={onClose} />
           <button
+            title="Close"
             onClick={onClose}
             className="w-9 h-9 rounded-full bg-[#f3f3f3] flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90"
           >
@@ -50,21 +51,23 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
           <div className="flex flex-col gap-1.5 md:gap-2 mb-5 md:mb-8">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-[#1a1c1c]">{word.cree}</h2>
-              <div className="flex items-center gap-1 bg-[#f3f3f3] rounded-full p-1 flex-shrink-0 ml-3 border border-[#c1c6d4]/15">
+              <div className="flex items-center gap-3 flex-shrink-0 ml-3 bg-[#f3f3f3] rounded-full px-3 py-1.5">
                 <button
+                  title={savedWordIds.includes(word.id) ? 'Unsave word' : 'Save word'}
                   onClick={() => toggleSavedWord(word.id)}
-                  className={`w-7 h-7 md:w-8 md:h-8 rounded-l-full rounded-r-md bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 shadow-sm ${savedWordIds.includes(word.id) ? 'text-[#004e99]' : 'text-[#727783]'}`}
+                  className={`flex items-center justify-center transition-colors active:scale-90 ${savedWordIds.includes(word.id) ? 'text-[#004e99]' : 'text-[#727783]'}`}
                 >
-                  <span className={`material-symbols-outlined text-[16px] md:text-[18px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
+                  <span className={`material-symbols-outlined text-[20px] md:text-[22px] ${savedWordIds.includes(word.id) ? 'fill-1' : ''}`}>bookmark</span>
                 </button>
                 <button
+                  title="View word connections"
                   onClick={() => navigate(`/nodes/${word.id}`)}
-                  className="w-7 h-7 md:w-8 md:h-8 rounded-md bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#727783] hover:text-[#004e99] shadow-sm"
+                  className="flex items-center justify-center transition-colors active:scale-90 text-[#727783] hover:text-[#004e99]"
                 >
-                  <span className="material-symbols-outlined text-[16px] md:text-[18px]">hub</span>
+                  <span className="material-symbols-outlined text-[20px] md:text-[22px]">hub</span>
                 </button>
-                <button className="w-7 h-7 md:w-8 md:h-8 rounded-r-full rounded-l-md bg-white flex items-center justify-center hover:bg-[#e8e8e8] transition-colors active:scale-90 text-[#004e99] shadow-sm">
-                  <span className="material-symbols-outlined text-[16px] md:text-[18px]">volume_up</span>
+                <button title="Play pronunciation" className="flex items-center justify-center transition-colors active:scale-90 text-[#004e99]">
+                  <span className="material-symbols-outlined text-[20px] md:text-[22px]">volume_up</span>
                 </button>
               </div>
             </div>
