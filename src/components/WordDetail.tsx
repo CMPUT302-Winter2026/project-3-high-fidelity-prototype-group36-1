@@ -149,7 +149,7 @@ const WordDetail: React.FC<WordDetailProps> = ({ word, onClose }) => {
             </div>
 
             {/* Flag Button */}
-            <button className="mt-6 md:mt-8 w-full flex items-center justify-center gap-2 py-3 md:py-4 rounded-full bg-[#e8e8e8] text-[#414752] hover:bg-[#e2e2e2] transition-colors active:scale-95 duration-200">
+            <button onClick={() => { onClose(); navigate('/contribute'); }} className="mt-6 md:mt-8 w-full flex items-center justify-center gap-2 py-3 md:py-4 rounded-full bg-[#e8e8e8] text-[#414752] hover:bg-[#e2e2e2] transition-colors active:scale-95 duration-200">
               <span className="material-symbols-outlined text-xs md:text-sm">flag</span>
               <span className="text-xs md:text-sm font-bold uppercase tracking-widest">Report Linguistic Error</span>
             </button>
