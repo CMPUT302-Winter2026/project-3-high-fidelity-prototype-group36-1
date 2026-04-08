@@ -1,14 +1,17 @@
 # Vocabulary Explorer
 
-A modern, interactive Cree vocabulary learning application with a persistent backend and visual relationship mapping.
+A modern, interactive Cree vocabulary learning application with visual relationship mapping.
 
 ## 🚀 Features
 
 - **Interactive Node Map**: Visualize word relationships through a dynamic hub.
-- **Persistent Backend**: Real dictionary data served via Express and `db.json`.
-- **Saved Words**: Global bookmarking system stored in local memory.
+- **Bundled Data**: All vocabulary data is bundled directly into the frontend.
+- **Saved Words**: Global bookmarking system stored in localStorage.
 - **Advanced Linguistics**: In-depth morphological and phonetic data for learners.
 - **Expert Mode**: Toggle advanced data visibility in settings.
+- **Dark Mode**: Toggle between light and dark themes.
+- **Diacritics-Insensitive Search**: Search Cree words without needing special characters.
+- **Onboarding Tutorial**: Splash screen for new users with replay option in settings.
 
 ## 🛠 Setup & Installation on a New Device
 
@@ -20,33 +23,33 @@ A modern, interactive Cree vocabulary learning application with a persistent bac
     npm install
     ```
 
-
 ## 🏃‍♂️ Running the Application
 
-This project requires **two** server processes to be running simultaneously:
+Start the development server:
 
-### 1. Start the Backend API
-In your first terminal tab, run:
-```bash
-npm run server
-```
-*Port: 3001* - This serves the vocabulary data and handles word suggestions.
-
-### 2. Start the Frontend Dev Server
-In your second terminal tab, run:
 ```bash
 npm run dev
 ```
-*Port: 3000* - Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+_Port: 3000_ - Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 🚀 Deploying to GitHub Pages
+
+```bash
+npm run deploy
+```
+
+This builds the app and publishes it to the `gh-pages` branch.
 
 ## 📁 Data Structure
-- **Frontend**: React (Vite), Framer Motion, Tailwind CSS v4.
-- **Backend**: Node.js, Express.
-- **Database**: `db.json` (Static JSON file used for persistent storage).
+
+- **Frontend**: React (Vite), Motion, Tailwind CSS v4.
+- **Data**: `db.json` (Bundled JSON vocabulary database).
 
 ## 💡 Tech Stack
+
 - **UI**: React 19 + TypeScript
 - **Styling**: Tailwind CSS + Material Symbols
-- **Animations**: Framer Motion
-- **Server**: Express.js
-- **Persistence**: File-based JSON Database
+- **Animations**: Motion (motion/react)
+- **Build Tool**: Vite
+- **Hosting**: GitHub Pages
