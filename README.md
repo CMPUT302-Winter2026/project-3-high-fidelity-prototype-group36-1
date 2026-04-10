@@ -2,6 +2,16 @@
 
 A modern, interactive Cree vocabulary learning application with visual relationship mapping.
 
+Link to the publicly deployed App: [![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://prabhjot2401.github.io/vocab-explorer/)
+
+## 🫂 Team 36
+
+- Prabhjot Singh
+- Oliver Moore
+- Riyasat Zaman
+- Mahir Mehedi
+- Syed Shahmeer Rahman
+
 ## 🚀 Features
 
 - **Interactive Node Map**: Visualize word relationships through a dynamic hub.
@@ -53,3 +63,10 @@ This builds the app and publishes it to the `gh-pages` branch.
 - **Animations**: Motion (motion/react)
 - **Build Tool**: Vite
 - **Hosting**: GitHub Pages
+
+## 🛠️ Tools Used
+
+- **Mobbin.com** for design inspiration
+- **Figma** for designing mockups
+- **Gemini 3.1** for converting Figma Designs to Workable UI
+- **Claude AI** for creating the backend
