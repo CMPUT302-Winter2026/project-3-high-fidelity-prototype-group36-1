@@ -6,4 +6,4 @@
 ### Riyasat Zaman - riyasat
 ### Syed Shahmeer Rahman - syedsha2
 
-Disclaimer: Code for prototype is not on the main branch in this repository, there is also a secondary link to the correct branch found on the prototypeDescription document on the project google drive folder.
+Disclaimer: Code for prototype is not on the main branch in this repository, it is located in the backend_less branch instead. There is also a secondary link to the correct branch found on the prototypeDescription document on the project google drive folder.
